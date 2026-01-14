@@ -15,7 +15,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Run tests
-        shell: 'nix develop -c bash -e {0}'
+        shell: 'nix develop --no-pure-eval -c bash -e {0}'
         run: |
          gleam test --target javascript --runtime node
          gleam test --target javascript --runtime deno
