@@ -20,14 +20,14 @@ jobs:
       - name: Setup Nix cache
         uses: DeterminateSystems/magic-nix-cache-action@main
 
-      - name: Setup devShell
-        run: nix develop --no-pure-eval
-
       - name: Check code formatting
-        run: gleam format --check
+        run: |
+          nix develop --no-pure-eval
+          gleam format --check
 
       - name: Run tests
         run: |
+          nix develop --no-pure-eval
           gleam test --target javascript --runtime node
           gleam test --target javascript --runtime deno
           gleam test --target javascript --runtime bun
