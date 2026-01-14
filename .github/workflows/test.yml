@@ -14,8 +14,9 @@ jobs:
       - uses: cachix/install-nix-action@v31
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
-      - run: |
-         nix develop --no-pure-eval
+      - name: Run tests
+        shell: 'nix develop -c bash -e {0}'
+        run: |
          gleam test --target javascript --runtime node
          gleam test --target javascript --runtime deno
          gleam test --target javascript --runtime bun
