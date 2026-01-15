@@ -17,7 +17,9 @@ jobs:
       - name: Run tests
         shell: 'nix develop --no-pure-eval -c bash -e {0}'
         run: |
-         gleam test --target javascript --runtime node
-         gleam test --target javascript --runtime deno
-         gleam test --target javascript --runtime bun
+         nix develop --no-pure-eval --command bash -c "
+            gleam test --target javascript --runtime node
+            gleam test --target javascript --runtime deno
+            gleam test --target javascript --runtime bun
+          "
 
