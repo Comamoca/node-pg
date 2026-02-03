@@ -27,10 +27,11 @@ jobs:
 
       - name: Run tests
         run: |
-          nix develop --no-pure-eval
-          gleam test --target javascript --runtime node
-          gleam test --target javascript --runtime deno
-          gleam test --target javascript --runtime bun
+	  nix develop --no-pure-eval -c bash -c "
+            gleam test --target javascript --runtime node &&
+            gleam test --target javascript --runtime deno &&
+            gleam test --target javascript --runtime bun
+	  "
 
   publish:
     name: Publish to Hex.pm
