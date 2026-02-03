@@ -24,6 +24,9 @@ jobs:
         run: |
           nix develop --no-pure-eval -c gleam format --check
 
+      - name: Setup nodepg
+        run: bun i
+
       - name: Run tests
         run: |
           nix develop --no-pure-eval -c bash -c "
