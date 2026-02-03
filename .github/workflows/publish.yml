@@ -22,8 +22,7 @@ jobs:
 
       - name: Check code formatting
         run: |
-          nix develop --no-pure-eval
-          gleam format --check
+          nix develop --no-pure-eval -c gleam format --check
 
       - name: Run tests
         run: |
@@ -51,9 +50,7 @@ jobs:
         env:
           HEXPM_API_KEY: ${{ secrets.HEXPM_API_KEY }}
         run: |
-          # Configure Hex authentication
-          echo "Publishing to Hex.pm..."
-          gleam publish --yes
+          nix develop --no-pure-eval -c gleam publish --yes
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
