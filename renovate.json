@@ -4,5 +4,5 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "schedule": ["every week on monday"]
+  "schedule": ["on monday"]
 }
